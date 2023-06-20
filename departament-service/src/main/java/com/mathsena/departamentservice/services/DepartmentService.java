@@ -6,4 +6,6 @@ import com.mathsena.departamentservice.entity.Department;
 public interface DepartmentService {
 
     DepartmentDto saveDepartment(DepartmentDto departmentDto);
+
+    DepartmentDto getDepartmentByCode(String code);
 }
