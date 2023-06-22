@@ -5,11 +5,10 @@ import com.mathsena.employeeservice.dto.DepartmentDto;
 import com.mathsena.employeeservice.dto.EmployeeDto;
 import com.mathsena.employeeservice.entity.Employee;
 import com.mathsena.employeeservice.repository.EmployeeRepository;
+import com.mathsena.employeeservice.service.APIClient;
 import com.mathsena.employeeservice.service.EmployeeService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
@@ -19,7 +18,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
 
     //private RestTemplate restTemplate;
-    private WebClient webClient;
+   // private WebClient webClient;
+
+    private APIClient apiClient;
+
+
 
     @Override
     public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
@@ -53,11 +56,15 @@ public class EmployeeServiceImpl implements EmployeeService {
             DepartmentDto departmentDto = responseEntity.getBody();
 */
 
-    DepartmentDto departmentDto = webClient.get()
+/*    DepartmentDto departmentDto = webClient.get()
             .uri("http://localhost:8080/api/departments/" + employee.getDepartmentCode())
             .retrieve()
             .bodyToMono(DepartmentDto.class)
             .block();
+
+ */
+        DepartmentDto departmentDto = apiClient.getDepartmentByCode(employee.getDepartmentCode());
+
 
         EmployeeDto employeeDto = new EmployeeDto(
                 employee.getId(),
