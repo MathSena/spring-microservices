@@ -1,5 +1,6 @@
 package com.mathsena.employeeservice.service;
 
+import com.mathsena.employeeservice.dto.APIResponseDto;
 import com.mathsena.employeeservice.dto.EmployeeDto;
 import org.springframework.stereotype.Service;
 
@@ -8,5 +9,5 @@ public interface EmployeeService {
 
     EmployeeDto saveEmployee(EmployeeDto employeeDto);
 
-    EmployeeDto getEmployeeById(Long employeeId);
+    APIResponseDto getEmployeeById(Long employeeId);
 }

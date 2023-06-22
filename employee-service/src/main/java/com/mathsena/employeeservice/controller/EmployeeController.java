@@ -1,5 +1,6 @@
 package com.mathsena.employeeservice.controller;
 
+import com.mathsena.employeeservice.dto.APIResponseDto;
 import com.mathsena.employeeservice.dto.EmployeeDto;
 import com.mathsena.employeeservice.service.EmployeeService;
 import lombok.AllArgsConstructor;
@@ -26,8 +27,8 @@ public class EmployeeController {
     // Build Get Employee REST API
 
     @GetMapping("{id}")
-    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable("id") Long employeeId){
-        EmployeeDto employeeDto = employeeService.getEmployeeById(employeeId);
+    public ResponseEntity<APIResponseDto> getEmployee(@PathVariable("id") Long employeeId){
+        APIResponseDto employeeDto = employeeService.getEmployeeById(employeeId);
         return new ResponseEntity<>(employeeDto, HttpStatus.OK);
 
     }
