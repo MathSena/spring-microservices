@@ -1,23 +1,31 @@
 spring:
-  datasource:
-    username: root
-    url: jdbc:mysql://localhost:3306/employee_db
-    password: '41494899'
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
-    hibernate:
-      ddl-auto: update
+#  datasource:
+#    username: root
+#    url: jdbc:mysql://localhost:3306/employee_db
+#    password: '41494899'
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQLDialect
+#    hibernate:
+#      ddl-auto: update
+
   application:
     name: EMPLOYEE-SERVICE
-server:
-  port: '8081'
+  config:
+    import: optional:configserver:http://localhost:8888
+  rabbitmq:
+    host: localhost
+    port: 5672
+    usernames: guest
+    password: guest
+#server:
+#  port: '8081'
 
 
 
-eureka:
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    defaultZone: http://localhost:8761/eureka/
+#eureka:
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    defaultZone: http://localhost:8761/eureka/
