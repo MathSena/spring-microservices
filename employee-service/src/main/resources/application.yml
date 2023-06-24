@@ -27,6 +27,11 @@ management:
     web:
       exposure:
         include: "*"
+    health:
+      show-details: always
+  health:
+    circuit breakers:
+      enabled: true
   tracing:
     sampling:
       probability: 0.1
@@ -43,3 +48,25 @@ logging:
 #    fetch-registry: true
 #    register-with-eureka: true
 #    defaultZone: http://localhost:8761/eureka/
+
+
+resilience4j:
+  circuit breaker:
+    instances:
+      EMPLOYEE-SERVICE:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+    retry:
+      registerHealthIndicator: true
+      maxRetryAttempts: 5
+      waitDuration: 1s
+
+
+
+
