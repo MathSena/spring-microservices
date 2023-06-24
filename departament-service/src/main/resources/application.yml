@@ -1,14 +1,14 @@
 spring:
-#  datasource:
-#    username: root
-#    url: jdbc:mysql://localhost:3306/departament_db
-#    password: '41494899'
-#  jpa:
-#   properties:
-#    hibernate:
-#      dialect: org.hibernate.dialect.MySQLDialect
-#    hibernate:
-#      ddl-auto: update
+  #  datasource:
+  #    username: root
+  #    url: jdbc:mysql://localhost:3306/departament_db
+  #    password: '41494899'
+  #  jpa:
+  #   properties:
+  #    hibernate:
+  #      dialect: org.hibernate.dialect.MySQLDialect
+  #    hibernate:
+  #      ddl-auto: update
   rabbitmq:
     host: localhost
     port: 5672
@@ -18,10 +18,10 @@ spring:
     name: DEPARTMENT-SERVICE
   config:
     import: optional:configserver:http://localhost:8888
+  zipkin:
+    base-url: http://127.0.0.1:9411/zipkin/
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-
-

@@ -11,6 +11,8 @@ spring:
         id: DEPARTMENT-SERVICE
         uri: lb://DEPARTMENT-SERVICE
         predicates[0]: Path=/api/departments/**
+  zipkin:
+    base-url: http://127.0.0.1:9411/zipkin/
 
 server:
   port: '9191'
