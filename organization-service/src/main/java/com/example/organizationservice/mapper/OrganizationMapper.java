@@ -14,7 +14,7 @@ public class OrganizationMapper {
         );
     }
 
-    public Organization mapToOrganization(OrganizationDto organizationDto){
+    public static Organization mapToOrganization(OrganizationDto organizationDto){
 
         return new Organization(
                 organizationDto.getId(), organizationDto.getOrganizationName(),
