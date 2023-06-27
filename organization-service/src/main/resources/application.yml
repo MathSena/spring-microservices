@@ -8,6 +8,8 @@ spring:
     port: 5672
     usernames: guest
     password: guest
+  zipkin:
+    base-url: http://127.0.0.1:9411/zipkin/
 #  datasource:
 #    url: jdbc:mysql://localhost:3306/organization_db
 #    username: root
