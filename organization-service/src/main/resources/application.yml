@@ -3,7 +3,11 @@ spring:
     name: ORGANIZATION-SERVICE
   config:
     import: optional:configserver:http://localhost:8888
-
+  rabbitmq:
+    host: localhost
+    port: 5672
+    usernames: guest
+    password: guest
 #  datasource:
 #    url: jdbc:mysql://localhost:3306/organization_db
 #    username: root
@@ -22,4 +26,8 @@ spring:
 #    fetch-registry: true
 #    register-with-eureka: true
 #    defaultZone: http://localhost:8761/eureka/
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
