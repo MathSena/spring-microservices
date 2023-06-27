@@ -3,6 +3,7 @@ package com.mathsena.employeeservice.service.impl;
 import com.mathsena.employeeservice.dto.APIResponseDto;
 import com.mathsena.employeeservice.dto.DepartmentDto;
 import com.mathsena.employeeservice.dto.EmployeeDto;
+import com.mathsena.employeeservice.dto.OrganizationDto;
 import com.mathsena.employeeservice.entity.Employee;
 import com.mathsena.employeeservice.mapper.EmployeeMapper;
 import com.mathsena.employeeservice.repository.EmployeeRepository;
@@ -60,12 +61,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
        // DepartmentDto departmentDto = apiClient.getDepartmentByCode(employee.getDepartmentCode());
 
+        OrganizationDto organizationDto = webClient.get()
+                .uri("http://localhost:8083/api/organizations/" + employee.getOrganizationCode())
+                .retrieve()
+                .bodyToMono(OrganizationDto.class)
+                .block();
 
         EmployeeDto employeeDto = EmployeeMapper.mapToEmployeeDto(employee);
 
         APIResponseDto apiResponseDto = new APIResponseDto();
         apiResponseDto.setEmployee(employeeDto);
         apiResponseDto.setDepartment(departmentDto);
+        apiResponseDto.setOrganization(organizationDto);
 
         return apiResponseDto;
     }
