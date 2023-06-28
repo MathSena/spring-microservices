@@ -15,6 +15,17 @@ spring:
         id: ORGANIZATION-SERVICE
         uri: lb://ORGANIZATION-SERVICE
         predicates[0]: Path=/api/organizations/**
+      gateway:
+        globals:
+          corsConfigurations:
+            '[/**]':
+              allowedOrigins: "https://docs.spring.io"
+              allowedMethods:
+                - GET
+                - POST
+                - PUT
+                - DELETE
+
   zipkin:
     base-url: http://127.0.0.1:9411/zipkin/
 
