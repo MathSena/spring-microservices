@@ -5,7 +5,7 @@ import com.example.organizationservice.entity.Organization;
 
 public class OrganizationMapper {
 
-    public static OrganizationDto mapToOrganizationDto(Organization organization){
+    public static OrganizationDto mapToOrganizationDto(Organization organization) {
 
         return new OrganizationDto(
                 organization.getId(), organization.getOrganizationName(),
@@ -14,7 +14,7 @@ public class OrganizationMapper {
         );
     }
 
-    public static Organization mapToOrganization(OrganizationDto organizationDto){
+    public static Organization mapToOrganization(OrganizationDto organizationDto) {
 
         return new Organization(
                 organizationDto.getId(), organizationDto.getOrganizationName(),
