@@ -1,17 +1,16 @@
 package com.example.organizationservice.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
+@Schema(
+        description = "OrganizationDto Model Information"
+)
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -19,8 +18,21 @@ import java.time.LocalDateTime;
 public class OrganizationDto {
 
     private Long id;
+    @Schema(
+            description = "Organization Name"
+    )
     private String organizationName;
+    @Schema(
+            description = "Organization Description"
+    )
     private String organizationDescription;
+    @Schema(
+            description = "Organization Code"
+    )
     private String organizationCode;
+
+    @Schema(
+            description = "Organization createdDate"
+    )
     private LocalDateTime createdDate;
 }
